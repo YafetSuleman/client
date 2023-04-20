@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+            integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+            crossorigin="anonymous"
+            src="https://code.jquery.com/jquery-3.6.4.min.js"
+        ></script>
+        <script src="./showUsers.js"></script>
+        <style type="text/css">
+            tbody {
+                font-size: small;
+            }
+            td {
+                padding: 5px 10px;
+            }
+            .center {
+                text-align: center;
+            }
+            .pagination {
+                display: inline-block;
+            }
+            .pagination a {
+                color: black;
+                float: left;
+                padding: 8px 16px;
+                text-decoration: none;
+                transition: background-color 0.3s;
+                border: 1px solid #ddd;
+                margin: 0 4px;
+            }
+            .pagination a.active {
+                background-color: #5e5f5e;
+                color: white;
+                border: 1px solid #5e5f5e;
+            }
+            .pagination a:hover:not(.active) {
+                background-color: #ddd;
+            }
+        </style>
+        <title>List</title>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Company</th>
+                    <th>Time stamp</th>
+                    <th>Country</th>
+                    <th>
+                        <button onclick="window.location.href='./addUser.html'">
+                            Add user
+                        </button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+        <div class="center">
+            <div class="pagination">
+                <a id="vv" href="#" onclick="handlePage()">&laquo;</a>
+                <a id="v" href="#" onclick="handlePage()">&lt;</a>
+                <a id="1" href="#" onclick="handlePage()" class="number active"
+                    >1</a
+                >
+                <a id="2" href="#" onclick="handlePage()" class="number">2</a>
+                <a id="3" href="#" onclick="handlePage()" class="number">3</a>
+                <a id="4" href="#" onclick="handlePage()" class="number">4</a>
+                <a id="h" href="#" onclick="handlePage()">&gt;</a>
+                <a id="hh" href="#" onclick="handlePage()">&raquo;</a>
+            </div>
+        </div>
+    </body>
+</html>

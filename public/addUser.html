@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+            integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+            crossorigin="anonymous"
+            src="https://code.jquery.com/jquery-3.6.4.min.js"
+        ></script>
+        <script src="./addUser.js"></script>
+        <title>Add</title>
+    </head>
+    <body>
+        <h2>Add user</h2>
+        <div style="display: inline-flex">
+            <p>
+                Here you can add a new user to the database. The id is locked
+                and the date will be set to when the user is added.
+            </p>
+            <button
+                onclick="window.location.href='./'"
+                style="margin: auto 20px"
+            >
+                Back to list of users
+            </button>
+        </div>
+        <form id="addForm" onsubmit="handleSubmit(event)">
+            <label for="email">Email:</label>
+            <input name="email" id="email" type="email" required /><br /><br />
+
+            <label for="first">First name:</label>
+            <input name="first" id="first" type="text" required /><br /><br />
+
+            <label for="last">Last name:</label>
+            <input name="last" id="last" type="text" required /><br /><br />
+
+            <label for="company">Company:</label>
+            <input
+                name="company"
+                id="company"
+                type="text"
+                required
+            /><br /><br />
+
+            <label for="country">Country:</label>
+            <input
+                name="country"
+                id="country"
+                type="text"
+                required
+            /><br /><br />
+
+            <input type="submit" />
+        </form>
+    </body>
+</html>
