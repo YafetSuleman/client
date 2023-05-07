@@ -17,8 +17,16 @@
             td {
                 padding: 5px 10px;
             }
-            .center {
-                text-align: center;
+            .pageWrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: left;
+                justify-content: left;
+                row-gap: 20px;
+                margin-bottom: 20px;
+            }
+            .pageSize {
+                flex-direction: row;
             }
             .pagination {
                 display: inline-block;
@@ -44,6 +52,20 @@
         <title>List</title>
     </head>
     <body>
+        <div class="pageWrapper">
+            <div class="pageSize">
+                <label for="nrUsers">Number of users shown</label>
+                <input id="nrUsers" type="number" value="10" min="10" max="100" onchange="handlePageSizeChange()"> <br><br>
+                <label for="pageNr">Page:</label>
+                <input id="pageNr" type="number" value="1" onchange="handlePageChange(this)">
+            </div>
+            <div class="pagination">
+                <a id="vv" href="#" onclick="handlePageChange(1)">&laquo;</a>
+                <a id="v" href="#" onclick="handlePageChange(2)">&lt;</a>
+                <a id="h" href="#" onclick="handlePageChange(3)">&gt;</a>
+                <a id="hh" href="#" onclick="handlePageChange(4)">&raquo;</a>
+            </div>
+        </div>
         <table>
             <thead>
                 <tr>
@@ -51,10 +73,10 @@
                     <th>Email</th>
                     <th>First name</th>
                     <th>Last name</th>
-                    <th>Company</th>
                     <th>Time stamp</th>
                     <th>Country</th>
                     <th>
+                        <th>Company</th>
                         <button onclick="window.location.href='./addUser.html'">
                             Add user
                         </button>
@@ -63,19 +85,5 @@
             </thead>
             <tbody id="tableBody"></tbody>
         </table>
-        <div class="center">
-            <div class="pagination">
-                <a id="vv" href="#" onclick="handlePage()">&laquo;</a>
-                <a id="v" href="#" onclick="handlePage()">&lt;</a>
-                <a id="1" href="#" onclick="handlePage()" class="number active"
-                    >1</a
-                >
-                <a id="2" href="#" onclick="handlePage()" class="number">2</a>
-                <a id="3" href="#" onclick="handlePage()" class="number">3</a>
-                <a id="4" href="#" onclick="handlePage()" class="number">4</a>
-                <a id="h" href="#" onclick="handlePage()">&gt;</a>
-                <a id="hh" href="#" onclick="handlePage()">&raquo;</a>
-            </div>
-        </div>
     </body>
 </html>

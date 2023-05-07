@@ -1,24 +1,18 @@
-const usersPerPage = 15;
-let nrOfPages;
-let currentPage;
-
 function getUsers() {
-    return $.getJSON({ url: "./api/users", dataType: "json" });
+    console.log("jag körs");
+    const nrUsers = $("#nrUsers").val();
+    const pageNr = $("#pageNr").val();
+    $.getJSON({
+        url: `./api/users/?size=${nrUsers}&page=${pageNr}`,
+        dataType: "json",
+        success: (data) => {
+            postUsers(data);
+        },
+    });
 }
 
-const users = getUsers();
-
 function postUsers(users) {
-    nrOfPages = Math.ceil(users.length / usersPerPage);
-    currentPage = currentPage ?? 0;
-    const usersToShow = users.filter((_i, index) => {
-        return (
-            index > currentPage * usersPerPage &&
-            index < (currentPage + 1) * usersPerPage
-        );
-    });
-
-    $.each(usersToShow, (_i, user) => {
+    $.each(users, (_i, user) => {
         $("#tableBody:last-child").append(
             $("<tr>"),
             $("<td>").text(user.id),
@@ -33,7 +27,33 @@ function postUsers(users) {
         );
     });
 }
-postUsers(users);
+
+/**
+ * @param {Number|HTMLInputElement} changeOption
+ */
+function handlePageChange(changeOption) {
+    $("#pageNr").val((_i, oldPage) => {
+        switch (changeOption) {
+            case 1:
+                return 1;
+            case 2:
+                return oldPage > 1 ? --oldPage : oldPage;
+            case 3:
+                return ++oldPage;
+            case 4:
+                return 100;
+            default: //Manually input page number
+                return changeOption.value;
+        }
+    });
+
+    getUsers();
+}
+
+function handlePageSizeChange() {
+    $("#pageNr").val(1);
+    getUsers();
+}
 
 function modifyUser(id) {
     window.location.href = `./modifyUser.html?id=${id}`;
@@ -47,6 +67,6 @@ function deleteUser(id) {
     window.location.reload();
 }
 
-function handlePage() {
-    console.log(this);
-}
+document.addEventListener("DOMContentLoaded", () => {
+    getUsers();
+});
