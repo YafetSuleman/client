@@ -28,6 +28,14 @@
             .pageSize {
                 flex-direction: row;
             }
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+            input:invalid {
+                background-color: rgb(253, 181, 181);
+            }
             .pagination {
                 display: inline-block;
             }
@@ -55,9 +63,27 @@
         <div class="pageWrapper">
             <div class="pageSize">
                 <label for="nrUsers">Number of users shown</label>
-                <input id="nrUsers" type="number" value="10" min="10" max="100" onchange="handlePageSizeChange()"> <br><br>
+                <input
+                    id="nrUsers"
+                    type="number"
+                    value="10"
+                    min="1"
+                    max="100"
+                    required
+                    onchange="handlePageSizeChange()"
+                />
+                <label id="nrUsersError"></label>
+                <br /><br />
                 <label for="pageNr">Page:</label>
-                <input id="pageNr" type="number" value="1" onchange="handlePageChange(this)">
+                <input
+                    id="pageNr"
+                    type="number"
+                    value="1"
+                    min="1"
+                    required
+                    onchange="handlePageChange(this)"
+                />
+                <label id="pageNrError"></label>
             </div>
             <div class="pagination">
                 <a id="vv" href="#" onclick="handlePageChange(1)">&laquo;</a>
@@ -75,12 +101,10 @@
                     <th>Last name</th>
                     <th>Time stamp</th>
                     <th>Country</th>
-                    <th>
-                        <th>Company</th>
-                        <button onclick="window.location.href='./addUser.html'">
-                            Add user
-                        </button>
-                    </th>
+                    <th>Company</th>
+                    <button onclick="window.location.href='./addUser.html'">
+                        Add user
+                    </button>
                 </tr>
             </thead>
             <tbody id="tableBody"></tbody>
