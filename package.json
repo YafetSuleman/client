@@ -5,8 +5,8 @@
     "main": "client.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node server",
-        "dev": "nodemon server"
+        "start": "node client",
+        "dev": "nodemon client"
     },
     "keywords": [
         "frontend",
